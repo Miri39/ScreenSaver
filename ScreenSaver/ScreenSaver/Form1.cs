@@ -42,20 +42,25 @@ namespace ScreenSaver
             {
                 BGImages.Add(new Bitmap(image));
             }
+            RandomizePhotos();
+        }
 
+        private void RandomizePhotos()
+        {
+            britPics.Clear();
             for (int i = 0; i < 50; i++)
             {
                 BritPic mp = new BritPic();
                 mp.picNum = i % BGImages.Count;
                 mp.x = rand.Next(0, Width);
                 mp.y = rand.Next(0, Height);
-
                 britPics.Add(mp);
             }
         }
 
         private void timer1_Elapsed(object sender, ElapsedEventArgs e)
         {
+            RandomizePhotos();
             Refresh();
         }
 
